@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>QR Code Generator</title>
+</head>
+
+<body>
+    <div class="background">
+        <div class="animation"></div>
+        <main class="container">
+            <article data-theme="dark">
+                <header>QR Code Generator
+                    <div class="darkMode">
+                        <label>
+                            <input type="checkbox" id="darkModeCheckBox" role="switch" />
+                            Dark Mode
+                        </label>
+                    </div>
+                </header>
+                <form class="qrForm">
+                    <div id="qrcode-container"><img id="qrcode" placeholder src="placeholder.svg" class="grid"></div>
+                    <button type="button" id="downloadButton" style="display: none;">Download QR Code</button>
+
+
+                    <div class="urlEntry">
+                        <label>Enter URL</label>
+                        <input type="text" id="qrUrl" data-original-url="" placeholder="Enter URL" required>
+                        <button type="button" id="shortenButton">Shorten URL</button>
+                    </div>
+                    <div class="grid">
+                        <div class="qrColorEntry">
+                            <label for="qrColorPicker">Dots Color</label>
+                            <input type="color" id="qrColorPicker" value="#222222"> <!-- Set default hex code -->
+                        </div>
+                        <div class="colorHexInput">
+                            <label for="colorHexInput">Hex Code</label>
+                            <input type="text" id="qrColor" class="colorInput" placeholder="Enter hex code" value="#222222"> <!-- Set default hex code -->
+                        </div>
+                        <div class="qrBGColorEntry">
+                            <label for="bgColorPicker">Background Color</label>
+                            <input type="color" id="bgColorPicker" value="#EEEEEE"> <!-- Set default hex code -->
+                        </div>
+                        <div class="bgHexInput">
+                            <label for="bgHexInput">Hex Code</label>
+                            <input type="text" id="bgColor" class="colorInput" placeholder="Enter hex code" value="#EEEEEE"> <!-- Set default hex code -->
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="contrastWarning">
+                        ⚠️ Warning: Low contrast between QR Code and Background Color. QR Code May Not Work.
+                    </div>
+                    <div class="options grid">
+                        <div class="sizeButtonGroup">
+                            <label>Select Size: </label>
+                            <span class="sizeButtons">
+                                <input type="radio" id="btnSmall" name="size" value="small">480px
+                                <input type="radio" id="btnMed" name="size" value="medium" checked>720px
+                                <input type="radio" id="btnLarge" name="size" value="large">1080px
+                            </span>
+                        </div>
+                    </div>
+                    <div class="controlButtonGroup">
+                        <span class="controlButtons grid">
+                            <button type="submit" id="buttonQrSubmit" role="button" disabled>Generate QR Code</button>
+                            <button type="button" class="contrast outline" role="button" id="buttonQrReset">Start
+                                Over</button>
+                        </span>
+                    </div>
+                </form>
+            </article>
+        </main>
+    </div>
+    <div class="loading-animation" aria-busy="true" style="display: none;">
+        Loading
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="qrious.js"></script>
+    <script src="main.js"></script>
+    <script src="generate.js"></script>
+    <script src="contrast.js"></script>
+    <script src="darkmode.js"></script>
+</body>
+
+</html>
