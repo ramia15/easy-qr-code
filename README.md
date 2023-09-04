@@ -1,7 +1,8 @@
 # easy-qr-code
 
 Easy QR Code Generator is a web application that allows users to easily create QR codes from URLs, customize QR code appearance, and download them for various purposes. 
-This project provides a user-friendly interface for generating QR codes with options for size, color, and dark mode. There's even a built-in URL shortener!
+This project provides a user-friendly interface for generating QR codes with options for size, color, and dark mode. There's even a built-in URL shortener! The focus was to make this web app as user-friendly 
+and convenient as possible.
 
 ## Features
 
@@ -52,22 +53,15 @@ To run this project locally, follow these steps:
 
 ===========================================================
 
-Open the project folder:
-
-sh
-Copy code
-cd qr-code-generator
-Open index.html in a web browser or serve it using a local server.
-
-Contributing
+## Contributing
 Contributions to this project are welcome! If you have any ideas, bug reports, or feature requests, please open an issue or create a pull request.
 
-License
+## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-Acknowledgments
+## Acknowledgments
 QRious - Used for generating QR codes in JavaScript.
 PicoCSS - Used for minimalistic CSS styles.
 URL Shortener Service By BigLobster - Shorten Links
 
-Author - Rami - ramia15
+## Author - Rami - ramia15
