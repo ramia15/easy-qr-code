@@ -4,7 +4,7 @@ const cors = require('cors');
 const axios = require('axios');
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 5500;
 console.log (port);
 
 const corsOptions = {

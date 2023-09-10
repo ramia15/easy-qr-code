@@ -21,7 +21,7 @@ document.getElementById('shortenButton').addEventListener('click', async () => {
 
             // Add a custom class to visually disable the button
             shortenButton.classList.add('custom-disabled');
-            const response = await fetch('/shorten', {
+            const response = await fetch('https://easy-qr-code-213cd3729788.herokuapp.com/shorten', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
