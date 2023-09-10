@@ -7,11 +7,13 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const corsOptions = {
-  origin: 'https://easy-qr-code-213cd3729788.herokuapp.com', // Update this to the correct origin
+  origin: 'https://easy-qr-code-213cd3729788.herokuapp.com',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
 };
 
+
+app.use(express.static(__dirname));
 app.use(cors(corsOptions));
 app.use(express.json());
 
