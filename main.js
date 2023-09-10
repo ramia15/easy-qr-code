@@ -3,6 +3,9 @@
 let originalUrl = '';
 let urlShortened = false; // Add a flag to track if URL is shortened
 
+// Determine the server URL based on the environment
+const serverUrl = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3000'; // Adjust the port as needed
+
 // Add an event listener to the "Shorten URL" button
 document.getElementById('shortenButton').addEventListener('click', async () => {
     const urlInput = document.getElementById('qrUrl');
@@ -21,7 +24,7 @@ document.getElementById('shortenButton').addEventListener('click', async () => {
 
             // Add a custom class to visually disable the button
             shortenButton.classList.add('custom-disabled');
-            const response = await fetch('http://localhost:5500/shorten', {
+            const response = await fetch(`${serverUrl}/shorten`, { // Use the dynamically determined server URL
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -71,7 +74,7 @@ document.getElementById('qrUrl').addEventListener('input', resetURLInputField);
 function resetURLInputField() {
     const shortenButton = document.getElementById('shortenButton');
     const urlInput = document.getElementById('qrUrl');
-    
+
     shortenButton.classList.remove('custom-disabled');
     shortenButton.textContent = 'Shorten URL';
     shortenButton.disabled = false;
@@ -81,7 +84,7 @@ function resetURLInputField() {
 
     // Clear the data-original-url attribute
     urlInput.setAttribute('data-original-url', '');
-    
+
     // Reset the URL shortened flag
     urlShortened = false;
 }
