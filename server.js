@@ -5,9 +5,10 @@ const axios = require('axios');
 
 const app = express();
 const port = process.env.PORT;
+console.log (port);
 
 const corsOptions = {
-  origin: '*', // Update this to the correct origin
+  origin: 'https://easy-qr-code-213cd3729788.herokuapp.com/', 
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
 };
