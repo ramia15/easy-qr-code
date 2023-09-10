@@ -23,6 +23,9 @@ async function shortenURL(originalURL) {
   if (!originalURL.startsWith('http://') && !originalURL.startsWith('https://')) {
     originalURL = 'http://' + originalURL;
   }
+app.get('/index.html', (req, res) => {
+  res.sendFile(__dirname + 'index.html');
+});
 
   const encodedParams = new URLSearchParams();
   encodedParams.set('url', originalURL);
