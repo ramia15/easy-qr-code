@@ -1,19 +1,5 @@
 require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
 const axios = require('axios');
-
-const app = express();
-const port = process.env.PORT || 5500;
-
-const corsOptions = {
-  origin: 'http://127.0.0.1:5500', // Update this to the correct origin
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-};
-
-app.use(cors(corsOptions));
-app.use(express.json());
 
 async function shortenURL(originalURL) {
   const apiKey = process.env.URLSHORT;
@@ -47,27 +33,27 @@ async function shortenURL(originalURL) {
   }
 }
 
-app.post('/shorten', async (req, res) => {
-  const { url } = req.body;
+module.exports = async (req, res) => {
+  if (req.method === 'POST') {
+    const { url } = req.body;
 
-  if (!url) {
-    return res.status(400).json({ error: 'URL is required' });
-  }
-
-  try {
-    const shortUrl = await shortenURL(url);
-
-    if (shortUrl) {
-      res.status(200).send(shortUrl); // Send the shortened URL as plain text with a 200 status code
-    } else {
-      res.status(500).json({ error: 'Failed to shorten URL' });
+    if (!url) {
+      return res.status(400).json({ error: 'URL is required' });
     }
-  } catch (error) {
-    console.error('An error occurred:', error);
-    res.status(500).json({ error: 'An error occurred while shortening the URL' });
-  }
-});
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+    try {
+      const shortUrl = await shortenURL(url);
+
+      if (shortUrl) {
+        res.status(200).send(shortUrl); // Send the shortened URL as plain text with a 200 status code
+      } else {
+        res.status(500).json({ error: 'Failed to shorten URL' });
+      }
+    } catch (error) {
+      console.error('An error occurred:', error);
+      res.status(500).json({ error: 'An error occurred while shortening the URL' });
+    }
+  } else {
+    res.status(405).end(); // Method not allowed
+  }
+};
