@@ -3,8 +3,9 @@
 let originalUrl = '';
 let urlShortened = false; // Add a flag to track if URL is shortened
 
-// Determine the server URL based on the environment
-const serverUrl = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3000'; // Adjust the port as needed
+// Use the environment variable set in the .env file
+const serverUrl = process.env.REACT_APP_API_URL || 'http://localhost:3000';
+
 
 // Add an event listener to the "Shorten URL" button
 document.getElementById('shortenButton').addEventListener('click', async () => {
