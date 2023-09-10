@@ -1,5 +1,10 @@
+// main.js
+
 let originalUrl = '';
 let urlShortened = false; // Add a flag to track if URL is shortened
+
+// Use the environment variable set in the .env file
+const serverUrl = '/api/shorten'; // Update this to the correct endpoint
 
 // Add an event listener to the "Shorten URL" button
 document.getElementById('shortenButton').addEventListener('click', async () => {
@@ -19,7 +24,7 @@ document.getElementById('shortenButton').addEventListener('click', async () => {
 
             // Add a custom class to visually disable the button
             shortenButton.classList.add('custom-disabled');
-            const response = await fetch('/api/shorten', { // Make the request to the serverless function
+            const response = await fetch(serverUrl, { // Use the correct serverless function URL
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
