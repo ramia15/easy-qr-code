@@ -21,7 +21,7 @@ document.getElementById('shortenButton').addEventListener('click', async () => {
 
             // Add a custom class to visually disable the button
             shortenButton.classList.add('custom-disabled');
-            const response = await fetch('/api/shorten', { // Use the relative path to your serverless function
+            const response = await fetch('http://localhost:3000/shorten', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ document.getElementById('qrUrl').addEventListener('input', resetURLInputField);
 function resetURLInputField() {
     const shortenButton = document.getElementById('shortenButton');
     const urlInput = document.getElementById('qrUrl');
-
+    
     shortenButton.classList.remove('custom-disabled');
     shortenButton.textContent = 'Shorten URL';
     shortenButton.disabled = false;
@@ -81,7 +81,7 @@ function resetURLInputField() {
 
     // Clear the data-original-url attribute
     urlInput.setAttribute('data-original-url', '');
-
+    
     // Reset the URL shortened flag
     urlShortened = false;
 }
