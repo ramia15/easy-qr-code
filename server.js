@@ -7,7 +7,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const corsOptions = {
-  origin: 'http://localhost:3000', // Update this to the correct origin
+  origin: 'https://easy-qr-code-213cd3729788.herokuapp.com', // Update this to the correct origin
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
 };
