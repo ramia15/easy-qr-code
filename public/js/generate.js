@@ -259,7 +259,7 @@ function resetForm() {
     if (existingQRCode) {
         // Replace the QR code with a placeholder graphic
         const placeholderImage = document.createElement("img");
-        placeholderImage.src = "placeholder.svg"; // Replace with the path to your placeholder image
+        placeholderImage.src = "public/assets/placeholder.svg"; // Replace with the path to your placeholder image
         placeholderImage.id = "qrcode";
         placeholderImage.className = "img-responsive center-block";
 

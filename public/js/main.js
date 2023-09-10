@@ -2,20 +2,26 @@
 
 let originalUrl = '';
 let urlShortened = false; // Add a flag to track if URL is shortened
+const shortenButton = document.getElementById('shortenButton');
+const urlInput = document.getElementById('qrUrl');
+
+
+
+urlInput.addEventListener('input', function() {
+    if (urlInput.value.length > 17) {
+        shortenButton.style.display = "block";
+    } else {
+        shortenButton.style.display = "none";
+    }
+});
 
 // Add an event listener to the "Shorten URL" button
 document.getElementById('shortenButton').addEventListener('click', async () => {
-    const urlInput = document.getElementById('qrUrl');
     const url = urlInput.value;
-    const shortenButton = document.getElementById('shortenButton');
 
     if (!url) {
         alert('URL is required');
         return;
-    }
-    if (url.length <= 17) {
-        shortenButton.setAttribute('data-tooltip', 'This link is already shorter than our shortest URL.');
-        return;ß
     }
     try {
         if (!urlShortened) {

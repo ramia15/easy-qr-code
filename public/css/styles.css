@@ -22,8 +22,8 @@
     font-size:.5rem;
 }
 
-#downloadButton{
-display:none;
+#downloadButton #shortenButton{
+display: none;
 }
 
 .sizeButtonGroup{
