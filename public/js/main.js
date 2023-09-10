@@ -13,7 +13,10 @@ document.getElementById('shortenButton').addEventListener('click', async () => {
         alert('URL is required');
         return;
     }
-
+    if (url.length <= 17) {
+        shortenButton.setAttribute('data-tooltip', 'This link is already shorter than our shortest URL.');
+        return;ß
+    }
     try {
         if (!urlShortened) {
             // Set the data-tooltip attribute
@@ -71,7 +74,7 @@ document.getElementById('qrUrl').addEventListener('input', resetURLInputField);
 function resetURLInputField() {
     const shortenButton = document.getElementById('shortenButton');
     const urlInput = document.getElementById('qrUrl');
-    
+
     shortenButton.classList.remove('custom-disabled');
     shortenButton.textContent = 'Shorten URL';
     shortenButton.disabled = false;
@@ -81,7 +84,7 @@ function resetURLInputField() {
 
     // Clear the data-original-url attribute
     urlInput.setAttribute('data-original-url', '');
-    
+
     // Reset the URL shortened flag
     urlShortened = false;
 }
