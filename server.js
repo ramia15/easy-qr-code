@@ -7,7 +7,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const corsOptions = {
-  origin: 'https://easy-qr-code-213cd3729788.herokuapp.com',
+  origin: '*', // Update this to the correct origin
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
 };
@@ -25,7 +25,7 @@ async function shortenURL(originalURL) {
   if (!originalURL.startsWith('http://') && !originalURL.startsWith('https://')) {
     originalURL = 'http://' + originalURL;
   }
-app.get('/index.html', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(__dirname + 'index.html');
 });
 
