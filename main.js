@@ -21,7 +21,7 @@ document.getElementById('shortenButton').addEventListener('click', async () => {
 
             // Add a custom class to visually disable the button
             shortenButton.classList.add('custom-disabled');
-            const response = await fetch('http://localhost:3000/shorten', {
+            const response = await fetch('/shorten', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
